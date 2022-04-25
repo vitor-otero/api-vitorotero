@@ -21,7 +21,7 @@ struct SongController: RouteCollection {
         //Get data from db >> Song Model
         return Song.query(on: req.db).all()
     }
-    
+        //Create data on db
     func create(req: Request) throws -> EventLoopFuture<HTTPStatus> {
         let song = try req.content.decode(Song.self)
         return song.save(on: req.db).transform(to: .ok)
